@@ -60,6 +60,22 @@ So that I can control the distribution of bikes,
 I'd like docking stations not to accept more bikes than their capacity.
 ```
 
+### *Broken Bikes*
+
+```
+As a member of the public,
+So that I reduce the chance of getting a broken bike in future,
+I'd like to report a bike as broken when I return it.
+
+As a maintainer of the system,
+So that I can manage broken bikes and not disappoint users,
+I'd like docking stations not to release broken bikes.
+
+As a maintainer of the system,
+So that I can manage broken bikes and not disappoint users,
+I'd like docking stations to accept returning bikes (broken or not).
+```
+
 ## Features
 
 ### *Basics*
@@ -71,9 +87,16 @@ I'd like docking stations not to accept more bikes than their capacity.
 * Docking Station has a default capacity of 20 bikes [x]
 * Docking Station capacity is flexible depending on user demand []
 * Bike may or may not be working []
-* Docking Station can only release a bike if it is working []
+* Docking Station can only release bike if it is working []
 
 ### *Edge Cases*
 
 * Docking Station cannot release bike if there are none [x]
 * Docking Station cannot dock bike if capacity has been reached [x]
+
+### *Broken Bikes*
+
+* Bike has a status to see if it is "working" or "broken" [x]
+* If bike is broken, user can report bike as broken [x]
+* Docking Station still allows the docking of broken bikes [x]
+* Docking Station cannot release a bike if it is broken []

@@ -2,7 +2,7 @@ require 'docking_station'
 
 describe DockingStation do
 
-  let(:station)        { DockingStation.new }
+  let(:station)        { described_class.new }
   let(:bike)           { Bike.new }
 
   describe 'initialization' do
@@ -37,13 +37,29 @@ describe DockingStation do
   describe '#release' do
     it 'releases a bike from the docking station' do
       station.dock(bike)
-      station.release
+      station.release(bike)
       expect(station.bikes).not_to include(bike)
     end
 
     it 'cannot release a bike if there are none available' do
-      expect { station.release }.to raise_error("There are no bikes available")
+      expect { station.release(bike) }.to raise_error("There are no bikes available")
     end
+  end
+
+  context 'when bike is broken' do
+
+    it 'docks a bike even if it is reported as `broken`' do
+      bike.report_broken
+      station.dock(bike)
+      expect(station.bikes).to include(bike)
+    end
+
+    it 'cannot release a bike if the bike is broken' do
+      bike.report_broken
+      station.dock(bike)
+      expect { station.release(bike) }.to raise_error("Bike is broken")
+    end
+
   end
 
 end
