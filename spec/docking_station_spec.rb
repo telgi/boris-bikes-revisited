@@ -16,4 +16,12 @@ describe DockingStation do
     end
   end
 
+  describe '#release' do
+    it 'releases a bike from the docking station' do
+      station.dock(bike)
+      station.release
+      expect(station.bikes).not_to include(bike)
+    end
+  end
+
 end

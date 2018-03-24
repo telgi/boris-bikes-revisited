@@ -35,6 +35,6 @@ I'd like to see if a bike is working
 * Docking Station is an object that has as an empty container attribute [x]
 * Bike starts as a dumb object that always works [x]
 * Docking Station can store bikes in its container [x]
-* Docking Station can release a bike from its container []
+* Docking Station can release a bike from its container [x]
 * Bike may or may not be working []
 * Docking Station can only release a bike if it is working []

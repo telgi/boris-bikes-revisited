@@ -12,4 +12,8 @@ class DockingStation
     @bikes << bike
   end
 
+  def release
+    @bikes.pop
+  end
+
 end
