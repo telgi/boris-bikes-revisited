@@ -4,7 +4,7 @@ Using Ruby Object Oriented Programming to design docking stations for Boris Bike
 
 ## Installation
 
-`git clone path-to-repo`
+`git clone git@github.com:telgi/boris-bikes-revisited.git`
 
 ## Usage
 
@@ -46,6 +46,10 @@ I want to see a bike that has been docked
 As a member of the public,
 So that I am not confused and charged unnecessarily,
 I'd like docking stations not to release bikes when there are none available.
+
+As a maintainer of the system,
+So that I can control the distribution of bikes,
+I'd like docking stations not to accept more bikes than their capacity.
 ```
 
 ## Features
@@ -61,4 +65,5 @@ I'd like docking stations not to release bikes when there are none available.
 
 ### *Edge Cases*
 
-* Docking Station cannot release bike if there are none []
+* Docking Station cannot release bike if there are none [x]
+* Docking Station cannot dock bike if capacity has been reached []
