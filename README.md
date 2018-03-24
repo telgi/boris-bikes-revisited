@@ -86,8 +86,8 @@ I'd like docking stations to accept returning bikes (broken or not).
 * Docking Station can release a bike from its container [x]
 * Docking Station has a default capacity of 20 bikes [x]
 * Docking Station capacity is flexible depending on user demand []
-* Bike may or may not be working []
-* Docking Station can only release bike if it is working []
+* Bike may or may not be working [x]
+* Docking Station can only release bike if it is working [x]
 
 ### *Edge Cases*
 
@@ -99,4 +99,4 @@ I'd like docking stations to accept returning bikes (broken or not).
 * Bike has a status to see if it is "working" or "broken" [x]
 * If bike is broken, user can report bike as broken [x]
 * Docking Station still allows the docking of broken bikes [x]
-* Docking Station cannot release a bike if it is broken []
+* Docking Station cannot release a bike if it is broken [x]
