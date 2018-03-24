@@ -2,11 +2,24 @@ require 'docking_station'
 
 describe DockingStation do
 
-  let(:station) { DockingStation.new }
-  let(:bike)    { Bike.new }
+  let(:station)        { DockingStation.new }
+  let(:bike)           { Bike.new }
 
-  it 'is an empty container that will store `bikes`' do
-    expect(station.bikes).to be_empty
+  describe 'initialization' do
+
+    it 'creates an empty container that will store `bikes`' do
+      expect(station.bikes).to be_empty
+    end
+
+    it 'defaults capacity to `20`' do
+      expect(station.capacity).to equal(DockingStation::DEFAULT_CAPACITY)
+    end
+
+    it 'allows capacity to change based on user demand' do
+      bigger_station = DockingStation.new(30)
+      expect(bigger_station.capacity).to equal(30)
+    end
+
   end
 
   describe '#dock' do
@@ -16,7 +29,7 @@ describe DockingStation do
     end
 
     it 'cannot dock a bike if capacity has been reached' do
-      DockingStation::DEFAULT_CAPACITY.times { station.dock(bike) }
+      subject.capacity.times { station.dock(bike) }
       expect { station.dock(bike) }.to raise_error("There are no spaces available")
     end
   end

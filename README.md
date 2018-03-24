@@ -42,6 +42,10 @@ I want to see a bike that has been docked
 As a system maintainer,
 So that I can plan the distribution of bikes,
 I want a docking station to have a default capacity of 20 bikes.
+
+As a system maintainer,
+So that busy areas can be served more effectively,
+I want to be able to specify a larger capacity when necessary.
 ```
 
 ### *Edge Cases*
@@ -64,11 +68,12 @@ I'd like docking stations not to accept more bikes than their capacity.
 * Bike starts as a dumb object that always works [x]
 * Docking Station can store bikes in its container [x]
 * Docking Station can release a bike from its container [x]
-* Docking Station has a capacity of 20 bikes [x]
+* Docking Station has a default capacity of 20 bikes [x]
+* Docking Station capacity is flexible depending on user demand []
 * Bike may or may not be working []
 * Docking Station can only release a bike if it is working []
 
 ### *Edge Cases*
 
 * Docking Station cannot release bike if there are none [x]
-* Docking Station cannot dock bike if capacity has been reached []
+* Docking Station cannot dock bike if capacity has been reached [x]
