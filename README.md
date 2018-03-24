@@ -76,11 +76,23 @@ So that I can manage broken bikes and not disappoint users,
 I'd like docking stations to accept returning bikes (broken or not).
 ```
 
+### *Bike Delivery*
+
+```
+As a maintainer of the system,
+So that I can manage broken bikes and not disappoint users,
+I'd like vans to take broken bikes from docking stations and deliver them to garages to be fixed.
+
+As a maintainer of the system,
+So that I can manage broken bikes and not disappoint users,
+I'd like vans to collect working bikes from garages and distribute them to docking stations.
+```
+
 ## Features
 
 ### *Basics*
 
-* Docking Station is an object that has as an empty container attribute [x]
+* Docking Station is an object that has as an empty container attribute for storing bikes [x]
 * Bike starts as a dumb object that always works [x]
 * Docking Station can store bikes in its container [x]
 * Docking Station can release a bike from its container [x]
@@ -100,3 +112,16 @@ I'd like docking stations to accept returning bikes (broken or not).
 * If bike is broken, user can report bike as broken [x]
 * Docking Station still allows the docking of broken bikes [x]
 * Docking Station cannot release a bike if it is broken [x]
+
+### *Bike Delivery*
+
+* Garage is an object that has as an empty container attribute for storing vans [x]
+* Garage can add a new van to match user demand [x]
+* Garage also has as an empty container attribute for storing bikes [x]
+* Garage can release a van from its container [x]
+* Van is an object that has as an empty container attribute for storing bikes [x]
+* Van can pick up a broken bike from a docking station []
+* Van can deliver a broken bike back to the garage []
+* Garage can store a van into its container []
+* Garage can fix a bike and change its status to 'working' []
+* Van can deliver fixed bike back to docking station []
