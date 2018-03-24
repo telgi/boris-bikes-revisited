@@ -32,9 +32,9 @@ I'd like to see if a bike is working
 
 ## Features
 
-* Docking Station is an object that has as an empty container attribute
-* Bike starts as a dumb object
-* Docking Station can store bikes in its container
-* Docking Station can release a bike from its container
-* Docking Station can only release a bike if it is working
-* Bike knows if it is working or not
+* Docking Station is an object that has as an empty container attribute [x]
+* Bike starts as a dumb object that always works [x]
+* Docking Station can store bikes in its container [x]
+* Docking Station can release a bike from its container []
+* Bike may or may not be working []
+* Docking Station can only release a bike if it is working []
