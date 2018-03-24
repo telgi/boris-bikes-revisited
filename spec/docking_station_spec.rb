@@ -16,7 +16,7 @@ describe DockingStation do
     end
 
     it 'cannot dock a bike if capacity has been reached' do
-      DockingStation::CAPACITY.times { station.dock(bike) }
+      DockingStation::DEFAULT_CAPACITY.times { station.dock(bike) }
       expect { station.dock(bike) }.to raise_error("There are no spaces available")
     end
   end
