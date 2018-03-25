@@ -1,29 +1,24 @@
+require_relative 'docking_station'
+require_relative 'bike'
+require_relative 'bike_container'
+
 class Van
+  include BikeContainer
 
-  attr_reader :bikes
-  attr_accessor :capacity
-
-  DEFAULT_CAPACITY = 5
-
-  def initialize(capacity = DEFAULT_CAPACITY)
-    @bikes = []
-    @capacity = capacity
+  def unload(station)
+    raise "No broken bikes available" if broken_bikes(station).empty?
+    bikes << station.bikes.delete(broken_bikes(station).pop)
   end
 
-  def dock(bike)
-    raise "Bike is working" if !bike.broken?
-    raise "Capacity has been reached" if full?
-    @bikes << bike
-  end
-
-  def release
-    @bikes.pop
+  def re_stock(station)
+    raise "Bikes need to be fixed" if working_bikes.empty?
+    station.bikes << bikes.delete(working_bikes.pop)
   end
 
   private
 
-  def full?
-    @bikes.length == DEFAULT_CAPACITY
+  def broken_bikes(station)
+    station.bikes.select { |bike| bike.broken? }
   end
 
 end

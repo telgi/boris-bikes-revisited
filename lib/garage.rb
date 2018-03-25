@@ -1,6 +1,8 @@
 require_relative 'van'
+require_relative 'bike_container'
 
 class Garage
+  include BikeContainer
 
   attr_reader :vans
 
@@ -8,16 +10,16 @@ class Garage
     @vans = []
   end
 
-  def dock(van)
-    @vans << van
-  end
-
-  def fix(bike)
-    bike.report_fixed
+  def dock(bike)
+    add_bike(bike)
   end
 
   def release
-    @vans.pop
+    remove_bike
+  end
+
+  def fix(bike)
+    bike.fix
   end
 
 end

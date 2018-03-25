@@ -1,45 +1,43 @@
 require 'van'
+require 'support/shared_examples_for_bike_container'
 
 describe Van do
 
+  it_behaves_like BikeContainer
+
   let(:van)     { described_class.new }
+  let(:station) { double("station") }
   let(:bike)    { double("bike") }
 
-  describe 'initialization' do
-    it 'creates an empty container for storing bikes' do
-      expect(van.bikes).to be_empty
-    end
-
-    it 'defaultS capacity to 5' do
-      expect(van.capacity).to eq(Van::DEFAULT_CAPACITY)
-    end
-  end
-
-  describe '#dock' do
-    it 'docks a broken bike' do
+  describe '#unloads' do
+    it 'unloads all the broken bikes from the docking station' do
+      allow(station).to receive(:bikes).and_return([bike])
       allow(bike).to receive(:broken?).and_return(true)
-      van.dock(bike)
+      van.unload(station)
       expect(van.bikes).to include(bike)
     end
 
-    it 'cannot dock a working bike' do
-      allow(bike).to receive(:broken?).and_return(false)
-      expect { van.dock(bike) }.to raise_error("Bike is working")
-    end
-
-    it 'cannot dock a bike if capacity has been reached' do
-      allow(bike).to receive(:broken?).and_return(true)
-      Van::DEFAULT_CAPACITY.times { van.dock(bike) }
-      expect { van.dock(bike) }.to raise_error("Capacity has been reached")
+    it 'cannot unload working bikes from the docking station' do
+      allow(station).to receive(:bikes).and_return([])
+      expect { van.unload(station) }.to raise_error("No broken bikes available")
     end
   end
 
-  describe '#release' do
-    it 'releases a bike' do
+  describe '#re-stock' do
+    it 're-stocks the docking station with working bikes' do
+      allow(station).to receive(:bikes).and_return([bike])
       allow(bike).to receive(:broken?).and_return(true)
-      van.dock(bike)
-      van.release
-      expect(van.bikes).not_to include(bike)
+      van.unload(station)
+      allow(bike).to receive(:broken?).and_return(false)
+      van.re_stock(station)
+      expect(van.bikes).to be_empty
+    end
+
+    it 'cannot re-stock docking station if bikes have not been fixed yet' do
+      allow(station).to receive(:bikes).and_return([bike])
+      allow(bike).to receive(:broken?).and_return(true)
+      van.unload(station)
+      expect { van.re_stock(station) }.to raise_error("Bikes need to be fixed")
     end
   end
 

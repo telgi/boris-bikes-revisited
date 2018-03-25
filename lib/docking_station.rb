@@ -8,9 +8,9 @@ class DockingStation
     add_bike(bike)
   end
 
-  def release(bike)
-    raise "Bike is broken" if bike.broken?
-    remove_bike
+  def release
+    raise "No working bikes available" if working_bikes.empty?
+    bikes.delete(working_bikes.pop)
   end
 
 end

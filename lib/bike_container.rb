@@ -29,4 +29,8 @@ module BikeContainer
     bikes.empty?
   end
 
+  def working_bikes
+    bikes.reject { |bike| bike.broken? }
+  end
+
 end

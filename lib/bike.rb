@@ -4,7 +4,7 @@ class Bike
     @broken = true
   end
 
-  def report_fixed
+  def fix
     @broken = false
   end
 
