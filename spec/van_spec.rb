@@ -10,21 +10,21 @@ describe Van do
   let(:bike)    { double("bike") }
 
   describe '#unloads' do
-    it 'unloads all the broken bikes from the docking station' do
+    it 'unloads a broken bikes from the docking station' do
       allow(station).to receive(:bikes).and_return([bike])
       allow(bike).to receive(:broken?).and_return(true)
       van.unload(station)
       expect(van.bikes).to include(bike)
     end
 
-    it 'cannot unload working bikes from the docking station' do
+    it 'cannot unload a working bike from the docking station' do
       allow(station).to receive(:bikes).and_return([])
       expect { van.unload(station) }.to raise_error("No broken bikes available")
     end
   end
 
   describe '#re-stock' do
-    it 're-stocks the docking station with working bikes' do
+    it 're-stocks a working bike into the docking station' do
       allow(station).to receive(:bikes).and_return([bike])
       allow(bike).to receive(:broken?).and_return(true)
       van.unload(station)
@@ -33,7 +33,7 @@ describe Van do
       expect(van.bikes).to be_empty
     end
 
-    it 'cannot re-stock docking station if bikes have not been fixed yet' do
+    it 'cannot re-stock docking station if the bikes have not been fixed yet' do
       allow(station).to receive(:bikes).and_return([bike])
       allow(bike).to receive(:broken?).and_return(true)
       van.unload(station)

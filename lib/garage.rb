@@ -1,25 +1,48 @@
 require_relative 'van'
+require_relative 'bike'
 require_relative 'bike_container'
 
 class Garage
-  include BikeContainer
 
-  attr_reader :vans
+  DEFAULT_CAPACITY = 20
 
-  def initialize
+  attr_reader :vans, :bikes, :capacity
+
+  def initialize(capacity = DEFAULT_CAPACITY)
     @vans = []
+    @bikes = []
   end
 
-  def dock(bike)
-    add_bike(bike)
+  def unload(van)
+    raise "No broken bikes available" if broken_bikes(van).empty?
+    bikes << van.bikes.delete(broken_bikes(van).pop)
+  end
+
+  def dock(van)
+    vans << van
+  end
+
+  def re_stock(van)
+    raise "Bikes need to be fixed" if working_bikes.empty?
+    van.bikes << bikes.delete(working_bikes.pop)
   end
 
   def release
-    remove_bike
+    vans.pop
   end
 
-  def fix(bike)
-    bike.fix
+  def fix_bikes
+    bikes.each { |bike| bike.fix }
+  end
+
+  private
+
+  def broken_bikes(van)
+    van.bikes.select { |bike| bike.broken? }
+  end
+
+  def working_bikes
+    bikes.reject { |bike| bike.broken? }
   end
 
 end
