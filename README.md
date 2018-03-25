@@ -116,14 +116,10 @@ I'd like vans to collect working bikes from garages and distribute them to docki
 ### *Bike Delivery*
 
 * Garage is an object that has as an empty container attribute for storing vans [x]
-* Garage also has as an empty container attribute for storing bikes [x]
 * Van is an object that has as an empty container attribute for storing bikes [x]
-* Garage can send a van out for delivery [x]
 * Van can dock a broken bike [x]
 * Van cannot dock a working bike [x]
-* Van can release a bike in transit [x]
-* Garage can dock broken bike [x]
-* Garage can store van after delivery [x]
-* Garage can release bike that is fixed [x]
-* Van can load bike for delivery [x]
-* Van can unload bike after delivery [x]
+* Garage can dock a van [x]
+* Garage can fix a broken bike [x]
+* Garage can release a van [x]
+* Van can release a bike [x]

@@ -11,4 +11,11 @@ describe Bike do
     end
   end
 
+  describe '#report_fixed' do
+    it 'returns false when checking if bike is broken' do
+      bike.report_fixed
+      expect(bike.broken?).to eq(false)
+    end
+  end
+
 end

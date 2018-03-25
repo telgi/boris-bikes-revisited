@@ -13,40 +13,22 @@ describe Van do
 
   describe '#dock' do
     it 'docks a broken bike' do
-      allow(bike).to receive(:status).and_return("in transit")
+      allow(bike).to receive(:broken?).and_return(true)
       van.dock(bike)
       expect(van.bikes).to include(bike)
     end
 
     it 'cannot dock a working bike' do
-      allow(bike).to receive(:status).and_return("working")
+      allow(bike).to receive(:broken?).and_return(false)
       expect { van.dock(bike) }.to raise_error("Bike is working")
     end
   end
 
   describe '#release' do
-    it 'releases a bike that is `in transit`' do
-      allow(bike).to receive(:status).and_return("in transit")
+    it 'releases a bike' do
+      allow(bike).to receive(:broken?).and_return(true)
       van.dock(bike)
       van.release
-      expect(van.bikes).not_to include(bike)
-    end
-  end
-
-  describe '#load' do
-    it 'loads a bike for delivery' do
-      allow(bike).to receive(:status).and_return("in transit")
-      van.load(bike)
-      expect(van.bikes).to include(bike)
-    end
-  end
-
-  describe '#unload' do
-    it 'unloads a bike after delivery' do
-      allow(bike).to receive(:status).and_return("in transit")
-      van.load(bike)
-      allow(bike).to receive(:status).and_return("working")
-      van.unload(bike)
       expect(van.bikes).not_to include(bike)
     end
   end
