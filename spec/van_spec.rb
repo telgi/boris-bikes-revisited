@@ -25,11 +25,29 @@ describe Van do
   end
 
   describe '#release' do
-    it 'releases a bike for the garage to fix it' do
+    it 'releases a bike that is `in transit`' do
       allow(bike).to receive(:status).and_return("in transit")
       van.dock(bike)
       van.release
-      expect(van.bikes).to be_empty
+      expect(van.bikes).not_to include(bike)
+    end
+  end
+
+  describe '#load' do
+    it 'loads a bike for delivery' do
+      allow(bike).to receive(:status).and_return("in transit")
+      van.load(bike)
+      expect(van.bikes).to include(bike)
+    end
+  end
+
+  describe '#unload' do
+    it 'unloads a bike after delivery' do
+      allow(bike).to receive(:status).and_return("in transit")
+      van.load(bike)
+      allow(bike).to receive(:status).and_return("working")
+      van.unload(bike)
+      expect(van.bikes).not_to include(bike)
     end
   end
 

@@ -18,8 +18,22 @@ class Van
     @bikes.pop
   end
 
+  def load(bike)
+    if bike.status == 'working'
+      bike.status = 'in transit'
+    end
+    @bikes << bike
+  end
+
+  def unload(bike)
+    if bike.status == 'in transit'
+      bike.status = 'working'
+    end
+    @bikes.pop
+  end
+
   private
-  
+
   def working(bike)
     bike.status == "working"
   end

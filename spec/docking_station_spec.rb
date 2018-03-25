@@ -36,7 +36,7 @@ describe DockingStation do
 
   describe '#release' do
     it 'releases a bike from the docking station' do
-      allow(bike).to receive(:status)
+      allow(bike).to receive(:broken?).and_return(false)
       station.dock(bike)
       station.release(bike)
       expect(station.bikes).not_to include(bike)
@@ -56,7 +56,7 @@ describe DockingStation do
     end
 
     it 'cannot release a bike if the bike is broken' do
-      allow(bike).to receive(:status).and_return("broken")
+      allow(bike).to receive(:broken?).and_return(true)
       station.dock(bike)
       expect { station.release(bike) }.to raise_error("Bike is broken")
     end
