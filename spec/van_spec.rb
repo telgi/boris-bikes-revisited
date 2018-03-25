@@ -9,6 +9,10 @@ describe Van do
     it 'creates an empty container for storing bikes' do
       expect(van.bikes).to be_empty
     end
+
+    it 'defaultS capacity to 5' do
+      expect(van.capacity).to eq(Van::DEFAULT_CAPACITY)
+    end
   end
 
   describe '#dock' do
@@ -21,6 +25,12 @@ describe Van do
     it 'cannot dock a working bike' do
       allow(bike).to receive(:broken?).and_return(false)
       expect { van.dock(bike) }.to raise_error("Bike is working")
+    end
+
+    it 'cannot dock a bike if capacity has been reached' do
+      allow(bike).to receive(:broken?).and_return(true)
+      Van::DEFAULT_CAPACITY.times { van.dock(bike) }
+      expect { van.dock(bike) }.to raise_error("Capacity has been reached")
     end
   end
 
