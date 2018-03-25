@@ -10,7 +10,7 @@ describe Van do
   let(:bike)    { double("bike") }
 
   describe '#unloads' do
-    it 'unloads a broken bikes from the docking station' do
+    it 'unloads a broken bike from the docking station' do
       allow(station).to receive(:bikes).and_return([bike])
       allow(bike).to receive(:broken?).and_return(true)
       van.unload(station)

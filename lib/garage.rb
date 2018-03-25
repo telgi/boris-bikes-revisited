@@ -1,14 +1,11 @@
 require_relative 'van'
 require_relative 'bike'
-require_relative 'bike_container'
 
 class Garage
 
-  DEFAULT_CAPACITY = 20
+  attr_reader :vans, :bikes
 
-  attr_reader :vans, :bikes, :capacity
-
-  def initialize(capacity = DEFAULT_CAPACITY)
+  def initialize
     @vans = []
     @bikes = []
   end

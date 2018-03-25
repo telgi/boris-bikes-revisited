@@ -1,6 +1,10 @@
 # Boris Bikes
 
-Using Ruby Object Oriented Programming to design docking stations for Boris Bikes.
+Using Ruby Object Oriented Programming to design the supply and demand of Boris Bikes / Santander Cycles.
+
+## Aim of Learning
+
+To revisit the 1st week of Makers and complete the weekly challenge in 1 weekend using TDD.
 
 ## Installation
 
@@ -48,7 +52,7 @@ So that busy areas can be served more effectively,
 I want to be able to specify a larger capacity when necessary.
 ```
 
-### *Edge Cases*
+### *Capacity Edge Cases*
 
 ```
 As a member of the public,
@@ -92,34 +96,37 @@ I'd like vans to collect working bikes from garages and distribute them to docki
 
 ### *Basics*
 
-* Docking Station is an object that has as an empty container attribute for storing bikes [x]
-* Bike starts as a dumb object that always works [x]
-* Docking Station can store bikes in its container [x]
-* Docking Station can release a bike from its container [x]
-* Docking Station has a default capacity of 20 bikes [x]
-* Docking Station capacity is flexible depending on user demand []
+* Docking Station stores bikes with a default capacity of 20 [x]
+* Docking Station capacity is flexible depending on user demand [x]
+* Docking Station can release a bike to user [x]
 * Bike may or may not be working [x]
-* Docking Station can only release bike if it is working [x]
+* Docking Station can only release bike to user if it is working [x]
 
-### *Edge Cases*
+### *Capacity Edge Cases*
 
 * Docking Station cannot release bike if there are none [x]
 * Docking Station cannot dock bike if capacity has been reached [x]
 
 ### *Broken Bikes*
 
-* Bike has a status to see if it is "working" or "broken" [x]
+* Bike has status to see if it is "broken" or not [x]
 * If bike is broken, user can report bike as broken [x]
-* Docking Station still allows the docking of broken bikes [x]
-* Docking Station cannot release a bike if it is broken [x]
+* Docking Station allows the docking of broken bikes [x]
+* Docking Station cannot release a bike to user if it is broken [x]
 
 ### *Bike Delivery*
 
-* Garage is an object that has as an empty container attribute for storing vans [x]
-* Van is an object that has as an empty container attribute for storing bikes [x]
-* Van can dock a broken bike [x]
-* Van cannot dock a working bike [x]
+* Garage stores vans and bikes with a default capacity of 20 [x]
+* Van stores bikes with a default capacity of 20 [x]
+* Van can take a broken bike from a docking station [x]
+* Van cannot take a working bike from a docking station [x]
 * Garage can dock a van [x]
-* Garage can fix a broken bike [x]
+* Garage can unload a broken bike from a van [x]
+* Garage can fix bikes [x]
+* Garage can load a fixed bike into a van [x]
 * Garage can release a van [x]
-* Van can release a bike [x]
+* Van can re-stock docking station with a working bike [x]
+
+## Screenshot
+
+![Alt text](/assets/images/irb_example.png?raw=true "Example of Code via irb")
